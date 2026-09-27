@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fleet Crisis Ops</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <div>
+      <div class="eyebrow">CRISIS OPERATIONS</div>
+      <h1>Fleet Command <span id="roleLabel">COMMAND</span></h1>
+    </div>
+    <div class="topstats">
+      <span><b id="liveDot">●</b> LIVE</span>
+      <span>Tick <b id="tick">0</b></span>
+      <span>Ships <b id="shipCount">15</b></span>
+      <button id="switchRole">Captain View</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="mapPanel">
+      <div id="map"></div>
+      <div class="mapLegend">
+        <span>● Normal</span><span>● Rerouting</span><span>● Distress</span><span>■ Restricted zone</span>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <div id="commandPanel">
+        <div class="panelTitle">FLEET STATUS</div>
+        <div id="fleetList"></div>
+      </div>
+
+      <div id="captainPanel" class="hidden">
+        <div class="panelTitle">CAPTAIN CONSOLE</div>
+        <div class="card">
+          <label>Ship</label>
+          <select id="captainShip"></select>
+          <div id="captainDetails"></div>
+        </div>
+        <div id="pendingDirective"></div>
+        <div class="card">
+          <label>Escalate distress</label>
+          <textarea id="distressText" placeholder="Example: Engine failure and 2 crew injured."></textarea>
+          <button class="dangerBtn" id="distressBtn">ESCALATE DISTRESS</button>
+        </div>
+        <div id="aiResult"></div>
+      </div>
+
+      <div class="card commandOnly">
+        <div class="panelTitle">COMMAND DIRECTIVE</div>
+        <select id="directiveShip"></select>
+        <select id="directiveType">
+          <option value="PORT">Reroute to port</option>
+          <option value="HOLD">Hold position</option>
+          <option value="WAYPOINT">Divert to waypoint</option>
+        </select>
+        <select id="directivePort"></select>
+        <button id="sendDirective">SEND DIRECTIVE</button>
+      </div>
+
+      <div class="card commandOnly">
+        <div class="panelTitle">RESTRICTED ZONES</div>
+        <p class="muted">Draw a polygon directly on the map.</p>
+        <button id="drawZone">DRAW ZONE</button>
+        <button class="secondary" id="clearZone">CLEAR DRAWING</button>
+      </div>
+
+      <div class="card">
+        <div class="panelTitle">ALERTS <span id="alertCount" class="badge">0</span></div>
+        <div id="alerts"></div>
+      </div>
+    </aside>
+  </main>
+
+  <div id="shipModal" class="modal hidden">
+    <div class="modalBox">
+      <button class="close" id="closeModal">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
