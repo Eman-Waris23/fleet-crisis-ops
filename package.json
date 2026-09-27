@@ -1,0 +1,14 @@
+{
+  "name": "fleet-crisis-ops",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Real-time crisis fleet command and captain system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}
